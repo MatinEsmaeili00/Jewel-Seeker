@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,26 +6,18 @@ public class PlayerLook : MonoBehaviour
 {
     public Camera cam;
     public InputActionReference look;
+    public Transform weaponSocket;
 
-    private void OnEnable()
-    {
-        look.action.Enable();
-    }
+    public float radius = 0.05f;
 
-    private void OnDisable()
-    {
-        look.action.Disable();
-    }
-
-    void Update()
+    void LateUpdate()
     {
         Vector2 input = look.action.ReadValue<Vector2>();
-
         Vector2 direction;
 
-        if (input.magnitude <= 1.5f)
+        if (input.magnitude <= 1f)
         {
-            if (input.magnitude < 0.2f)
+            if (input.sqrMagnitude < 0.01f)
                 return;
 
             direction = input;
@@ -37,10 +30,14 @@ public class PlayerLook : MonoBehaviour
                 -cam.transform.position.z
             ));
 
-            direction = world - transform.position;
+            direction = (Vector2)(world - transform.position);
         }
 
+        direction.Normalize();
+
+        weaponSocket.localPosition = direction * radius;
+
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        weaponSocket.rotation = Quaternion.Euler(0, 0, angle);
     }
 }
