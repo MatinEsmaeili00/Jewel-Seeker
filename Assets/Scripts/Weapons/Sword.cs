@@ -1,3 +1,4 @@
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class Sword : MonoBehaviour, IWeapon
@@ -6,38 +7,40 @@ public class Sword : MonoBehaviour, IWeapon
     private Animator animator;
 
     public bool isAttacking;
-
+    
     void Awake()
     {
         animator = GetComponent<Animator>();
     }
-
+    public bool AttackStatus()
+    {
+        return isAttacking;
+    }
     public void Attack()
     {
-        isAttacking = true;
-        animator.SetBool("isAttacking", true);
+        animator.SetTrigger("Attack");
         Debug.Log("Swing Sword");
+
     }
-
-    void Update()
-    {
-        AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
-
-        if (state.IsName("Attack") && state.normalizedTime >= 1f)
-        {
-            isAttacking = false;
-            animator.SetBool("isAttacking", false);
-        }
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isAttacking) return;
-
-        if (collision.CompareTag("Enemy"))
+        Debug.Log("Sword Collision");
+        if(collision.gameObject.CompareTag("Enemy"))
         {
-            IDamageable damageable = collision.GetComponent<IDamageable>();
-            damageable?.TakeDamage(data.damage);
+            IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+            
+            if (damageable == null) {return;}
+            else damageable.TakeDamage(data.damage);
         }
+    }
+    public void StartAttack()
+    {
+        isAttacking = true;
+        Debug.Log("Attack Started");
+    }
+    public void EndAttack()
+    {
+        isAttacking = false;
+        Debug.Log("Attacking ended");
     }
 }

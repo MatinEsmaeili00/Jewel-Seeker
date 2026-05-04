@@ -9,9 +9,33 @@ public class PlayerLook : MonoBehaviour
     public Transform weaponSocket;
 
     public float radius = 0.05f;
+    
+    private ItemEquip curItem;
+    private IWeapon weapon;
 
-    void LateUpdate()
+    void Start()
     {
+        curItem = GetComponent<ItemEquip>();
+        if(curItem.currentWeapon != null)
+        {weapon = curItem.currentWeapon.GetComponent<IWeapon>();}
+        
+    }
+    private void OnEnable()
+    {
+        look.action.Enable();
+    }
+    private void OnDisable()
+    {
+        look.action.Disable();
+    }
+    void Update()
+    {
+        if(curItem.currentWeapon != null)
+        {
+            weapon = curItem.currentWeapon.GetComponent<IWeapon>();
+            if(weapon.AttackStatus()){return;}
+        }
+        
         Vector2 input = look.action.ReadValue<Vector2>();
         Vector2 direction;
 
