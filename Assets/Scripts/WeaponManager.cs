@@ -19,6 +19,8 @@ public struct WeaponEntry
     public float damage;
     public float cooldown;
     public float runningCooldown;
+    
+    public float lastAttackTime;
 }
 
 public class WeaponManager : MonoBehaviour
@@ -27,6 +29,9 @@ public class WeaponManager : MonoBehaviour
     public static event System.Action<WeaponEntry,float,float> OnWeaponChanged;
     
     public static event System.Action<WeaponEntry,float,float> OnWeaponAttackStarted;
+    
+    
+    public static event System.Action<WeaponEntry,float,float> OnWeaponCooldownUpdated;
     
     // public static event Action<WeaponEntry, float, float> OnWeaponChanged;
     // public static event Action<WeaponEntry, float, float> OnWeaponAttackStarted;
@@ -39,6 +44,8 @@ public class WeaponManager : MonoBehaviour
     
     private WeaponType currentWeapon;
     public WeaponEntry currentWeaponData;
+    
+    private int currentWeaponIndex = 0;
 
     public float timeSinceLastAttack; 
 
@@ -56,6 +63,44 @@ public class WeaponManager : MonoBehaviour
     {
         PlayerController.OnWeaponSelected -= SelectWeapon;
         PlayerController.OnWeaponAttackButton -= TryAttack;
+    }
+    
+    private void Update() // it is streaming data to the Weapon ui !! need to be optimize
+    {
+        timeSinceLastAttack = Time.time - currentWeaponData.lastAttackTime;
+
+        if (timeSinceLastAttack < currentWeaponData.cooldown)
+        {
+            currentWeaponData.runningCooldown = timeSinceLastAttack;
+
+            // OnWeaponCooldownUpdated?.Invoke(
+            //     currentWeaponData,
+            //     currentWeaponData.runningCooldown,
+            //     currentWeaponData.cooldown
+            // );
+        }
+        else
+        {
+            currentWeaponData.runningCooldown = currentWeaponData.cooldown;
+
+            // OnWeaponCooldownUpdated?.Invoke(
+            //     currentWeaponData,
+            //     currentWeaponData.runningCooldown,
+            //     currentWeaponData.cooldown
+            // );
+        }
+        
+        
+        // IMPORTANT:
+        // because WeaponEntry is a struct, currentWeaponData is only a copy.
+        // So we write the updated data back into the real array.
+        weapons[currentWeaponIndex] = currentWeaponData;
+
+        OnWeaponCooldownUpdated?.Invoke(
+            currentWeaponData,
+            currentWeaponData.runningCooldown,
+            currentWeaponData.cooldown
+        );
     }
     
     private void Start()
@@ -82,6 +127,7 @@ public class WeaponManager : MonoBehaviour
 
             if (isSelected)
             {
+                currentWeaponIndex = i;
                 
                 currentWeaponData = weapons[i];
                 if (currentWeaponData.type== weaponsOldDateHolder.type )
@@ -90,31 +136,38 @@ public class WeaponManager : MonoBehaviour
                 }
             }
         }
-    
+        
         currentWeapon = type;
         OnWeaponChanged?.Invoke(currentWeaponData,currentWeaponData.runningCooldown,currentWeaponData.cooldown);
     }
     
     private void TryAttack()
     {
-        timeSinceLastAttack = Time.time - lastAttackTime;
+        timeSinceLastAttack = Time.time - currentWeaponData.lastAttackTime;
     
         //currentWeaponData.runningCooldown = ;
         if (timeSinceLastAttack < currentWeaponData.cooldown)
         {
             currentWeaponData.runningCooldown = timeSinceLastAttack;
+            
             weaponsOldDateHolder.runningCooldown = currentWeaponData.runningCooldown;
             weaponsOldDateHolder.type = currentWeaponData.type;
             //OnWeaponAttackStarted?.Invoke(currentWeaponData,currentWeaponData.runningCooldown,currentWeaponData.cooldown);
+            
+            weapons[currentWeaponIndex] = currentWeaponData;
+            
             Debug.Log("Weapon still on cooldown!");
             return;
         }
         
         weaponsOldDateHolder.type = currentWeaponData.type;
-        currentWeaponData.runningCooldown = currentWeaponData.cooldown;
+        //currentWeaponData.runningCooldown = currentWeaponData.cooldown;
+        currentWeaponData.runningCooldown = 0;
         weaponsOldDateHolder.runningCooldown = currentWeaponData.runningCooldown;
         
-        lastAttackTime = Time.time;
+        weapons[currentWeaponIndex] = currentWeaponData;
+        
+        currentWeaponData.lastAttackTime = Time.time;
         
         Debug.Log($"Attacked with {currentWeaponData.type}, Damage: {currentWeaponData.damage}");
     

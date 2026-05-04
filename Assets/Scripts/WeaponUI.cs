@@ -13,13 +13,17 @@ public class WeaponUI : MonoBehaviour
     public Image boomerangImageFill;
 
     public float fill;
+
+    public float fill2;
     
     
     public Coroutine currentFillRoutine;
     
     private Coroutine switchRoutine;
     private Coroutine cooldownRoutine;
-    
+
+
+    public float normalizedValue;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,12 +43,14 @@ public class WeaponUI : MonoBehaviour
     {
         WeaponManager.OnWeaponChanged += WeaponSwitchUpdateUI;
         WeaponManager.OnWeaponAttackStarted += WeaponAttackUpdateUI;
+        WeaponManager.OnWeaponCooldownUpdated += WeaponCooldownUpdateUI;
     }
 
     private void OnDisable()
     {
         WeaponManager.OnWeaponChanged -= WeaponSwitchUpdateUI;
         WeaponManager.OnWeaponAttackStarted -= WeaponAttackUpdateUI;
+        WeaponManager.OnWeaponCooldownUpdated -= WeaponCooldownUpdateUI;
     }
 
     private void WeaponSwitchUpdateUI(WeaponEntry weapon,float runningCooldown,float cooldown)
@@ -80,11 +86,11 @@ public class WeaponUI : MonoBehaviour
         {
             //targetImage.fillAmount = 1;
             
-            float normalizedValue = Mathf.Clamp01(runningCooldown / cooldown);
-            fill = normalizedValue;
+            // float normalizedValue = Mathf.Clamp01(runningCooldown / cooldown);
+            // fill = normalizedValue;
         
             targetImage.fillAmount = fill;
-            currentFillRoutine = StartCoroutine(AnimateFill(targetImage, 0, 1f,fill));
+            //currentFillRoutine = StartCoroutine(AnimateFill(targetImage, 0, 1f,normalizedValue));
         }
         
     }
@@ -105,18 +111,48 @@ public class WeaponUI : MonoBehaviour
 
         if (targetImage == null) return;
 
-        if (currentFillRoutine != null)
-            StopCoroutine(currentFillRoutine);
+        // if (currentFillRoutine != null)
+        //     StopCoroutine(currentFillRoutine);
         
         
-        float normalizedValue = Mathf.Clamp01(runningCooldown / cooldown);
-        fill = normalizedValue;
-        
-        targetImage.fillAmount = fill;
-        currentFillRoutine = StartCoroutine(AnimateFill(targetImage,0 , runningCooldown,fill));
+        // float normalizedValue = Mathf.Clamp01(runningCooldown / cooldown);
+        // fill = normalizedValue;
+        //
+        // targetImage.fillAmount = fill;
+        // currentFillRoutine = StartCoroutine(AnimateFill(targetImage,0 , runningCooldown,fill));
         
     }
     
+    
+    private void WeaponCooldownUpdateUI(WeaponEntry weapon, float runningCooldown, float cooldown)
+    {
+        Image targetImage = null;
+
+        normalizedValue = Mathf.Clamp01(runningCooldown / cooldown);
+
+        fill = normalizedValue;
+        
+        switch (weapon.type)
+        {
+            case WeaponType.Sword:
+                targetImage = swordImageFill;
+                break;
+
+            case WeaponType.Bow:
+                targetImage = bowImageFill;
+                break;
+
+            case WeaponType.Boomerang:
+                targetImage = boomerangImageFill;
+                //oldWeaponsData[2].runningCooldown = fill;
+                break;
+        }
+
+        if (targetImage == null) return;
+
+
+        targetImage.fillAmount = 1-fill;
+    }
     
     private IEnumerator AnimateFill(Image img, float target, float duration,float startTime)
     {

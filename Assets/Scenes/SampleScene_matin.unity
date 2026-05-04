@@ -620,6 +620,24 @@ MonoBehaviour:
   bowImageFill: {fileID: 171507619}
   boomerangImageFill: {fileID: 1251841139}
   fill: 0
+  fill2: 0
+  normalizedValue: 0
+  oldWeaponsData:
+  - type: 0
+    weaponObject: {fileID: 0}
+    damage: 0
+    cooldown: 0
+    runningCooldown: 0
+  - type: 1
+    weaponObject: {fileID: 0}
+    damage: 0
+    cooldown: 0
+    runningCooldown: 0
+  - type: 2
+    weaponObject: {fileID: 0}
+    damage: 0
+    cooldown: 0
+    runningCooldown: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
