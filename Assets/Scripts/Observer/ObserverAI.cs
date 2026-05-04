@@ -8,10 +8,10 @@ public enum ObserverState
     Stop
 }
 
-public class ObserverAI : MonoBehaviour
+public class ObserverAI : MonoBehaviour, IDamageable
 {
+    public float health = 1;
     public float moveSpeed = 1f;
-
     private ObserverState currState;
     private Rigidbody2D rb;
 
@@ -97,5 +97,16 @@ public class ObserverAI : MonoBehaviour
     void StopMoving()
     {
         rb.linearVelocity = Vector2.zero;
+    }
+    
+    public void TakeDamage(float amount)
+    {
+        Debug.Log("Observer is huwt");
+        health -= amount;
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
+        return;
     }
 }
