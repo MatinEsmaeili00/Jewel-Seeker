@@ -12,18 +12,18 @@ public PlayerHealth playerHealth;
     void Start()
     {
         CreateHearts();
-        UpdateHearts(playerHealth.currentHealth, playerHealth.maxHealth);
+        //UpdateHearts(playerHealth.currentHealth, playerHealth.maxHealth);
 
-        playerHealth.OnHealthChanged += UpdateHearts;
+        //playerHealth.OnHealthChanged += UpdateHearts;
     }
     void Update()
     {
-        UpdateHearts(playerHealth.currentHealth, playerHealth.maxHealth);
-    } 
+        //UpdateHearts(playerHealth.currentHealth, playerHealth.maxHealth);
+    }
 
     void CreateHearts()
     {
-        hearts = new Image[playerHealth.maxHealth];
+        //hearts = new Image[playerHealth.maxHealth];
 
         for (int i = 0; i < playerHealth.maxHealth; i++)
         {
