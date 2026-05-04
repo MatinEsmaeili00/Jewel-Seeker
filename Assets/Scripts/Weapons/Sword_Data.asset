@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sword_Data
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   itemName: Sword
-  worldPrefab: {fileID: 5618966592616837178, guid: f728d2bdd0a6d17ec8803a5483e88fbb, type: 3}
-  equippedPrefab: {fileID: 4510776410722459498, guid: b31e79ad413f58141aaf7db9e820bcf2, type: 3}
-  weaponAnimations: {fileID: 9100000, guid: c38c85e585ba852178c07ffb40782d8c, type: 2}
+  worldPrefab: {fileID: 5618966592616837178, guid: d3046f2a9ddc6a492bf22a28b6ca02a6, type: 3}
+  equippedPrefab: {fileID: 4510776410722459498, guid: 9598544d303faf5f5b72d1c8085b503b, type: 3}
+  weaponAnimations: {fileID: 9100000, guid: ab0cf9aa64a8da2de8968e6451d0b45c, type: 2}
   damage: 1
