@@ -51,7 +51,7 @@ public class WeaponManager : MonoBehaviour
 
     //private Dictionary<WeaponType, float> lastAttackTimes = new Dictionary<WeaponType, float>();
 
-    private float lastAttackTime = -9999;
+    //private float lastAttackTime = -9999;
 
     private void OnEnable()
     {
