@@ -3,15 +3,15 @@ using System;
 using UnityEditor.Callbacks;
 using System.Numerics;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IDamageable
 {
-    public int maxHealth = 10;
-    public int startHealth = 4;
-    public int currentHealth;
+    public float maxHealth = 10;
+    public float startHealth = 4;
+    public float currentHealth;
 
     public bool IsDead { get; private set; }
 
-    public event Action<int, int> OnHealthChanged;
+    public event Action<float, float> OnHealthChanged;
     public event Action OnDeath;
 
     private Rigidbody2D rb;
@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = startHealth;
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         if (IsDead) return;
 
@@ -37,7 +37,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void Heal(int amount)
+    public void Heal(float amount)
     {
         if (IsDead) return;
 
