@@ -554,11 +554,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 404399160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7348ee4fe073f4d47ae50dfaf62fdd48, type: 3}
+  m_Script: {fileID: 11500000, guid: c1271474d0c4a844c806928dbeecf9f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  maxHealth: 10
-  health: 5
+  maxHealth: 0
+  health: 0
   moveSpeed: 5
 --- !u!114 &404399167
 MonoBehaviour:
@@ -587,6 +587,12 @@ MonoBehaviour:
     weaponObject: {fileID: 0}
     damage: 0
     cooldown: 4
+    runningCooldown: 0
+  weaponsOldDateHolder:
+    type: 0
+    weaponObject: {fileID: 0}
+    damage: 0
+    cooldown: 0
     runningCooldown: 0
   currentWeaponData:
     type: 0
