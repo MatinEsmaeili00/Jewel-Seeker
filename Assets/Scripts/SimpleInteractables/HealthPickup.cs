@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HealthPickup : MonoBehaviour
 {
-    public int heal_amount = 1;
+    public float heal_amount = 1;
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
