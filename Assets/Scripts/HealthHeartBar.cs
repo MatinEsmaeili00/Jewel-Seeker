@@ -5,14 +5,15 @@ public class HealthHeartBar : MonoBehaviour
 {
     public GameObject heartPrefab;
     public PlayerController playerController;
+    public PlayerHealth playerHealth;
     List<HealthHeart> hearts = new List<HealthHeart>();
 
     public void DrawHearts()
     {
         ClearHearts();
 
-        float maxHealthRemainder = playerController.maxHealth % 2;
-        int heartsToMake = (int) ((playerController.maxHealth / 2) + maxHealthRemainder);
+        float maxHealthRemainder = playerHealth.maxHealth % 2;
+        int heartsToMake = (int) ((playerHealth.maxHealth / 2) + maxHealthRemainder);
 
         for (int i = 0; i < heartsToMake; i++)
         {
@@ -21,7 +22,7 @@ public class HealthHeartBar : MonoBehaviour
 
         for (int i = 0; i < hearts.Count; i++)
         {
-            int heartStatusRemainder = (int)Mathf.Clamp(playerController.health - (i*2), 0, 2);
+            int heartStatusRemainder = (int)Mathf.Clamp(playerHealth.currentHealth - (i*2), 0, 2);
             hearts[i].SetHeartImage((HearthStatus)heartStatusRemainder);
         }
         

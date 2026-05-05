@@ -15,11 +15,12 @@ public enum WeaponType
 public struct WeaponEntry
 {
     public WeaponType type;
+    public string name;
     public GameObject weaponObject;
     public float damage;
     public float cooldown;
     public float runningCooldown;
-    
+    public bool collected;
     public float lastAttackTime;
 }
 
@@ -57,12 +58,14 @@ public class WeaponManager : MonoBehaviour
     {
         PlayerController.OnWeaponSelected += SelectWeapon;
         PlayerController.OnWeaponAttackButton += TryAttack;
+        ItemEquip.OnWeaponEquip += WeaponEquip;
     }
 
     private void OnDisable()
     {
         PlayerController.OnWeaponSelected -= SelectWeapon;
         PlayerController.OnWeaponAttackButton -= TryAttack;
+        ItemEquip.OnWeaponEquip -= WeaponEquip;
     }
     
     private void Update() // it is streaming data to the Weapon ui !! need to be optimize
@@ -110,14 +113,18 @@ public class WeaponManager : MonoBehaviour
     
     private void SelectWeapon(int index)
     {
+        Debug.Log("it is calling select weapon!");
         if (!Enum.IsDefined(typeof(WeaponType), index))
+        {
+            Debug.Log("it is failing select weapon!");
             return;
-    
+        }    
         SwitchWeapon((WeaponType)index);
     }
     
     private void SwitchWeapon(WeaponType type)
     {
+        Debug.Log("switch weapon has been called!");
         for (int i = 0; i < weapons.Length; i++)
         {
             bool isSelected = weapons[i].type == type;
@@ -128,7 +135,7 @@ public class WeaponManager : MonoBehaviour
             if (isSelected)
             {
                 currentWeaponIndex = i;
-                
+                currentWeaponData.collected = true;
                 currentWeaponData = weapons[i];
                 if (currentWeaponData.type== weaponsOldDateHolder.type )
                 {
@@ -156,7 +163,7 @@ public class WeaponManager : MonoBehaviour
             
             weapons[currentWeaponIndex] = currentWeaponData;
             
-            Debug.Log("Weapon still on cooldown!");
+            //Debug.Log("Weapon still on cooldown!");
             return;
         }
         
@@ -169,12 +176,34 @@ public class WeaponManager : MonoBehaviour
         
         currentWeaponData.lastAttackTime = Time.time;
         
-        Debug.Log($"Attacked with {currentWeaponData.type}, Damage: {currentWeaponData.damage}");
+        //Debug.Log($"Attacked with {currentWeaponData.type}, Damage: {currentWeaponData.damage}");
     
         OnWeaponAttackStarted?.Invoke(currentWeaponData,currentWeaponData.runningCooldown,currentWeaponData.cooldown);
             
         
     
+    }
+
+    private void WeaponEquip(WeaponData data)
+    {
+        
+        Debug.Log("weapon Equip called ");
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            Debug.Log("weapon Equip before for loop "+ weapons[i].name+"  nextt "+ data.itemName);
+            
+            if (weapons[i].name == data.itemName)
+            {
+                Debug.Log("weapon Equip in for loop ");
+                SelectWeapon(i);
+            }
+            else
+            {
+                Debug.Log("weapon Equip failed for loop "+ weapons[i].name);
+            }
+            
+        }
+        
     }
     
 }

@@ -20,9 +20,12 @@ public class ObserverAI : MonoBehaviour, IDamageable
     public ObserverFlee flee;
     public ObserverFollow follow;
 
+    private SpriteRenderer sr;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -59,6 +62,10 @@ public class ObserverAI : MonoBehaviour, IDamageable
         }
         if (agro.isAgro)
         {
+            if (!sr.enabled)
+            {
+                sr.enabled = true;
+            }
             return ObserverState.Chase;
         }
 

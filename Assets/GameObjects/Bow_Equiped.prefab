@@ -10,15 +10,16 @@ GameObject:
   m_Component:
   - component: {fileID: 738602021573698924}
   - component: {fileID: 1083163718854343954}
-  - component: {fileID: -8054270354677727715}
   - component: {fileID: 5486509877838598236}
+  - component: {fileID: 8475711884192620352}
+  - component: {fileID: -4814473653695009281}
   m_Layer: 0
-  m_Name: Sword_World
+  m_Name: Bow_Equiped
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &738602021573698924
 Transform:
   m_ObjectHideFlags: 0
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 32
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 494790701, guid: 6ba97efab20289348bcf1b0f436ec66f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f049b8f6e6c70664abce7e9de8fc5a5c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,19 +94,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &-8054270354677727715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5618966592616837178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57d8657492f691a18adac17fc89981f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponPickup
-  weaponData: {fileID: 11400000, guid: c5906a4c4bbda58e08f4e0336018a42d, type: 2}
 --- !u!58 &5486509877838598236
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -142,3 +130,39 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &8475711884192620352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5618966592616837178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6132679096b9d43b554489c06401cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bow
+  data: {fileID: 11400000, guid: 5bee4e0a222351645af17479baf763c6, type: 2}
+  isAttacking: 0
+--- !u!95 &-4814473653695009281
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5618966592616837178}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ab0cf9aa64a8da2de8968e6451d0b45c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
