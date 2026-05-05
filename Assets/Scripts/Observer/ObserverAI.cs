@@ -26,6 +26,7 @@ public class ObserverAI : MonoBehaviour, IDamageable
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
