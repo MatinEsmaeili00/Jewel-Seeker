@@ -16,4 +16,8 @@ public class LoadLevels : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+    public void LoadWin()
+    {
+        SceneManager.LoadScene(4);
+    }
 }
