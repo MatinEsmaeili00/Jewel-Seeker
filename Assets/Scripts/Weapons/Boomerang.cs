@@ -1,4 +1,3 @@
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class Boomerang : MonoBehaviour, IWeapon
