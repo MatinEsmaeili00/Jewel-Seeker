@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
 
     private ItemEquip itemEquip;
 
-    public bool WeaponStatus;
+    public static bool WeaponStatus;
 
     void Start()
     {
@@ -35,13 +35,13 @@ public class PlayerAttack : MonoBehaviour
             {
                 return;
             }
-            OnWeaponMouseClick?.Invoke(itemEquip);
-            WeaponStatus = itemEquip.currWeaponData.isReadyToAttack;
+            itemEquip.currWeaponData.isReadyToAttack = WeaponStatus ;
             if (itemEquip.currWeaponData.isReadyToAttack)
             {
                 IWeapon weapon = itemEquip.currentWeapon?.GetComponent<IWeapon>();
                 weapon?.Attack();
             }
+            OnWeaponMouseClick?.Invoke(itemEquip);
 
             
         }
