@@ -1,8 +1,5 @@
 using UnityEngine;
 using System;
-using UnityEditor.Callbacks;
-using System.Numerics;
-using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
