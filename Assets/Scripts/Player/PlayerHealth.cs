@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
@@ -61,6 +62,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         GetComponent<PlayerDash>().enabled = false;
         GetComponent<PlayerInteract>().enabled = false;
         
-        Application.Quit();
+        SceneManager.LoadScene(4);
     }
 }
