@@ -36,6 +36,8 @@ public class WeaponManager : MonoBehaviour
     
     public static event System.Action<WeaponEntry,float,float> OnWeaponCooldownUpdated;
     
+    public static event System.Action<WeaponData> OnWeaponKeyboardSelect;
+    
     
     // public static event Action<WeaponEntry, float, float> OnWeaponChanged;
     // public static event Action<WeaponEntry, float, float> OnWeaponAttackStarted;
@@ -58,6 +60,8 @@ public class WeaponManager : MonoBehaviour
     public bool isAnyWeaponReady;
     
     public int collectedNumber;
+    
+    public WeaponData[] weaponEquipData;
 
     //private Dictionary<WeaponType, float> lastAttackTimes = new Dictionary<WeaponType, float>();
 
@@ -167,7 +171,11 @@ public class WeaponManager : MonoBehaviour
 
             if (isSelected)
             {
-                if (!weapons[i].collected) return;                
+                //if (!weapons[i].collected) return;
+                // if (weapons[i].name == weaponEquipData[i].itemName)
+                // {
+                //     PickWeapon(weaponEquipData[i]);
+                // }
                 currentWeaponIndex = i;
                 currentWeaponData.collected = true;
                 currentWeaponData = weapons[i];
@@ -267,6 +275,11 @@ public class WeaponManager : MonoBehaviour
                 LayerOneWin.isReadyToTransition = true;
             }
         }
+    }
+
+    void PickWeapon(WeaponData weaponData)
+    {
+        OnWeaponKeyboardSelect?.Invoke(weaponData);
     }
     
 }
