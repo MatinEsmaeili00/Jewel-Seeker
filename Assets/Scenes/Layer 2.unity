@@ -297,7 +297,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5512849523495841385, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_Name
-      value: Enemy 2 (2)
+      value: SilkWorm (2)
       objectReference: {fileID: 0}
     - target: {fileID: 5655670770256102298, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_LocalPosition.x
@@ -148012,7 +148012,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5512849523495841385, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_Name
-      value: Enemy 2 (8)
+      value: SilkWorm (8)
       objectReference: {fileID: 0}
     - target: {fileID: 5655670770256102298, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_LocalPosition.x
@@ -148069,7 +148069,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5512849523495841385, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_Name
-      value: Enemy 2 (5)
+      value: SilkWorm (5)
       objectReference: {fileID: 0}
     - target: {fileID: 5655670770256102298, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_LocalPosition.x
@@ -151741,7 +151741,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5512849523495841385, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_Name
-      value: Enemy 2 (4)
+      value: SilkWorm (4)
       objectReference: {fileID: 0}
     - target: {fileID: 5655670770256102298, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_LocalPosition.x
@@ -153327,7 +153327,7 @@ Tilemap:
       - {fileID: -237851949, guid: 9e0d88770e70fa248828953c61c6e351, type: 3}
       - {fileID: -1263187262, guid: 9e0d88770e70fa248828953c61c6e351, type: 3}
       - {fileID: -1422369920, guid: 9e0d88770e70fa248828953c61c6e351, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 34, y: -17, z: 0}
@@ -166989,7 +166989,7 @@ Tilemap:
       - {fileID: -1542001364, guid: 9e0d88770e70fa248828953c61c6e351, type: 3}
       - {fileID: -581924105, guid: 9e0d88770e70fa248828953c61c6e351, type: 3}
       - {fileID: -1345992211, guid: 9e0d88770e70fa248828953c61c6e351, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 25, y: -17, z: 0}
@@ -168717,7 +168717,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5512849523495841385, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_Name
-      value: Enemy 2 (7)
+      value: SilkWorm (7)
       objectReference: {fileID: 0}
     - target: {fileID: 5655670770256102298, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_LocalPosition.x
@@ -168840,7 +168840,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5512849523495841385, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_Name
-      value: Enemy 2 (6)
+      value: SilkWorm (6)
       objectReference: {fileID: 0}
     - target: {fileID: 5655670770256102298, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_LocalPosition.x
@@ -168897,7 +168897,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5512849523495841385, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_Name
-      value: Enemy 2 (1)
+      value: SilkWorm (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5655670770256102298, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_LocalPosition.x
@@ -168954,7 +168954,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5512849523495841385, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_Name
-      value: Enemy 2 (3)
+      value: SilkWorm(3)
       objectReference: {fileID: 0}
     - target: {fileID: 5655670770256102298, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_LocalPosition.x
@@ -169011,7 +169011,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5512849523495841385, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_Name
-      value: Enemy 2
+      value: SilkWorm
       objectReference: {fileID: 0}
     - target: {fileID: 5655670770256102298, guid: 9c681c37c7fb07e4a9bb5977a2e56824, type: 3}
       propertyPath: m_LocalPosition.x
