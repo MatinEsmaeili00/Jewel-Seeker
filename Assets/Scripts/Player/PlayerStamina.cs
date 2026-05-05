@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class PlayerStamina : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerStamina : MonoBehaviour
     public float regenDelay = 1.5f;      // delay after last use
 
     private float regenTimer;
+    
+    public Slider mySlider;
 
     public event Action<float, float> OnStaminaChanged;
 
@@ -20,6 +23,7 @@ public class PlayerStamina : MonoBehaviour
 
     void Update()
     {
+        mySlider.value = currentStamina/maxStamina;
         HandleRegen();
     }
 
