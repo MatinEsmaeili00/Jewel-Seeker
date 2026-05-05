@@ -3,6 +3,7 @@ using UnityEngine;
 public class LayerOneWin : MonoBehaviour
 {
     private LoadLevels loader;
+    public bool isReadyToTransition;
     void Awake()
     {
         loader = GetComponent<LoadLevels>();
@@ -15,7 +16,7 @@ public class LayerOneWin : MonoBehaviour
         }
 
         WeaponManager wm = other.gameObject.GetComponent<WeaponManager>();
-        if (wm != null && true)
+        if (isReadyToTransition)
         {
             loader.LoadLevel_2();
         }
