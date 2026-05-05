@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 140147814546371277}
   - component: {fileID: 5835977910034762694}
   - component: {fileID: 3054756166162853911}
-  - component: {fileID: 7180100646249957623}
+  - component: {fileID: 3622545594929204583}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -67,7 +67,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 1
@@ -171,7 +171,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
---- !u!82 &7180100646249957623
+--- !u!82 &3622545594929204583
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,13 +184,13 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: b156ada9317d14d4ba834641f6e73981, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.097
-  m_Pitch: 0.05
+  m_Volume: 1
+  m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 125
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

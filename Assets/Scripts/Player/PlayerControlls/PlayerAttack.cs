@@ -11,7 +11,16 @@ public class PlayerAttack : MonoBehaviour
     private ItemEquip itemEquip;
 
     public static bool WeaponStatus;
+    
+    private AudioSource audioSource;
 
+    public AudioClip selectedAudio;
+
+    
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     void Start()
     {
         itemEquip = GetComponent<ItemEquip>();
@@ -40,6 +49,11 @@ public class PlayerAttack : MonoBehaviour
             {
                 if (WeaponManager.currentWeaponData.collected)
                 {
+                    selectedAudio = WeaponManager.currentWeaponData.Audio;
+                    
+                    audioSource.clip = selectedAudio;
+                    audioSource.Play();
+                    
                     
                 IWeapon weapon = itemEquip.currentWeapon?.GetComponent<IWeapon>();
                 weapon?.Attack();

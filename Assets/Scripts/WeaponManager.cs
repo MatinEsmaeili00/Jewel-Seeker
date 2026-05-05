@@ -23,7 +23,9 @@ public struct WeaponEntry
     public bool collected;
     public float lastAttackTime;
 
-    
+    public AudioClip Audio;
+
+
 }
 
 public class WeaponManager : MonoBehaviour
@@ -66,6 +68,11 @@ public class WeaponManager : MonoBehaviour
     //private Dictionary<WeaponType, float> lastAttackTimes = new Dictionary<WeaponType, float>();
 
     //private float lastAttackTime = -9999;
+    
+    
+    private AudioSource audioSource;
+
+    public AudioClip WichingWeaponSound;
 
     private void OnEnable()
     {
@@ -84,7 +91,12 @@ public class WeaponManager : MonoBehaviour
         PlayerAttack.OnWeaponMouseClick -= WeaponAttackMouseClick;
         LayerOneWin.OnWeaponCheck -= WeaponCheck;
     }
-    
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void Update() // it is streaming data to the Weapon ui !! need to be optimize
     {
         if (currentWeaponData.collected)
@@ -149,6 +161,10 @@ public class WeaponManager : MonoBehaviour
     {
         if (!isAnyWeaponReady) return;
         //if (!currentWeaponData.collected)return;
+        
+        audioSource.clip = WichingWeaponSound;
+        audioSource.Play();
+        
         
             Debug.Log("it is calling select weapon!");
             if (!Enum.IsDefined(typeof(WeaponType), index))
