@@ -3,13 +3,17 @@ using UnityEngine;
 public class LayerOneWin : MonoBehaviour
 {
     private LoadLevels loader;
-    public bool isReadyToTransition;
+    public static bool isReadyToTransition;
+    
+    public static event System.Action OnWeaponCheck;
     void Awake()
     {
         loader = GetComponent<LoadLevels>();
     }
     void OnTriggerEnter2D(Collider2D other)
     {
+        
+        OnWeaponCheck?.Invoke();
         if (!other.gameObject.CompareTag("Player"))
         {
             return;

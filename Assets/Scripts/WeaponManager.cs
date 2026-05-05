@@ -22,6 +22,8 @@ public struct WeaponEntry
     public float runningCooldown;
     public bool collected;
     public float lastAttackTime;
+
+    
 }
 
 public class WeaponManager : MonoBehaviour
@@ -54,6 +56,8 @@ public class WeaponManager : MonoBehaviour
     public bool isReadyToAttack;
 
     public bool isAnyWeaponReady;
+    
+    public int collectedNumber;
 
     //private Dictionary<WeaponType, float> lastAttackTimes = new Dictionary<WeaponType, float>();
 
@@ -65,6 +69,7 @@ public class WeaponManager : MonoBehaviour
         PlayerController.OnWeaponAttackButton += TryAttack;
         ItemEquip.OnWeaponEquip += WeaponEquip;
         PlayerAttack.OnWeaponMouseClick += WeaponAttackMouseClick;
+        LayerOneWin.OnWeaponCheck += WeaponCheck;
     }
 
     private void OnDisable()
@@ -72,6 +77,7 @@ public class WeaponManager : MonoBehaviour
         PlayerController.OnWeaponSelected -= SelectWeapon;
         PlayerController.OnWeaponAttackButton -= TryAttack;
         ItemEquip.OnWeaponEquip -= WeaponEquip;
+        LayerOneWin.OnWeaponCheck -= WeaponCheck;
     }
     
     private void Update() // it is streaming data to the Weapon ui !! need to be optimize
@@ -240,6 +246,23 @@ public class WeaponManager : MonoBehaviour
         TryAttack();
         item.currWeaponData.isReadyToAttack = isReadyToAttack;
         
+    }
+
+    void WeaponCheck()
+    {
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            
+            if (weapons[i].collected)
+            {
+                collectedNumber++;
+            }
+
+            if (collectedNumber==3)
+            {
+                LayerOneWin.isReadyToTransition = true;
+            }
+        }
     }
     
 }
