@@ -48,7 +48,9 @@ public class WeaponManager : MonoBehaviour
     
     private int currentWeaponIndex = 0;
 
-    public float timeSinceLastAttack; 
+    public float timeSinceLastAttack;
+
+    public bool isReadyToAttack;
 
     //private Dictionary<WeaponType, float> lastAttackTimes = new Dictionary<WeaponType, float>();
 
@@ -59,6 +61,7 @@ public class WeaponManager : MonoBehaviour
         PlayerController.OnWeaponSelected += SelectWeapon;
         PlayerController.OnWeaponAttackButton += TryAttack;
         ItemEquip.OnWeaponEquip += WeaponEquip;
+        PlayerAttack.OnWeaponMouseClick += WeaponAttackMouseClick;
     }
 
     private void OnDisable()
@@ -75,6 +78,7 @@ public class WeaponManager : MonoBehaviour
         if (timeSinceLastAttack < currentWeaponData.cooldown)
         {
             currentWeaponData.runningCooldown = timeSinceLastAttack;
+            isReadyToAttack = false;
 
             // OnWeaponCooldownUpdated?.Invoke(
             //     currentWeaponData,
@@ -85,6 +89,7 @@ public class WeaponManager : MonoBehaviour
         else
         {
             currentWeaponData.runningCooldown = currentWeaponData.cooldown;
+            isReadyToAttack =  true;
 
             // OnWeaponCooldownUpdated?.Invoke(
             //     currentWeaponData,
@@ -150,6 +155,7 @@ public class WeaponManager : MonoBehaviour
     
     private void TryAttack()
     {
+        isReadyToAttack = false;
         timeSinceLastAttack = Time.time - currentWeaponData.lastAttackTime;
     
         //currentWeaponData.runningCooldown = ;
@@ -203,6 +209,13 @@ public class WeaponManager : MonoBehaviour
             }
             
         }
+        
+    }
+
+    void WeaponAttackMouseClick(ItemEquip item )
+    {
+        TryAttack();
+        item.currWeaponData.isReadyToAttack = isReadyToAttack;
         
     }
     

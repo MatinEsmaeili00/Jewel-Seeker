@@ -10,7 +10,7 @@ public class ItemEquip : MonoBehaviour
     public Transform weaponSocket;
 
     public GameObject currentWeapon;
-    private WeaponData currWeaponData;
+    public WeaponData currWeaponData;
 
     
     
