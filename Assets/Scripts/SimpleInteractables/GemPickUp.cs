@@ -15,11 +15,14 @@ public class GemPickUp : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("shiiiiiiiii");
         if(collision.gameObject.CompareTag("Gem"))
         {
             curGemNum++;
             if (curGemNum >= goalNum1) isGoalLayer2 = true;
             if (curGemNum >= goalNum2) isGoalLayer3 = true;
+            
+            Destroy(collision.gameObject);
         }
     }
     
