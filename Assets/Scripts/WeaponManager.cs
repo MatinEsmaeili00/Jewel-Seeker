@@ -22,6 +22,8 @@ public struct WeaponEntry
     public float runningCooldown;
     public bool collected;
     public float lastAttackTime;
+
+    
 }
 
 public class WeaponManager : MonoBehaviour
@@ -33,6 +35,7 @@ public class WeaponManager : MonoBehaviour
     
     
     public static event System.Action<WeaponEntry,float,float> OnWeaponCooldownUpdated;
+    
     
     // public static event Action<WeaponEntry, float, float> OnWeaponChanged;
     // public static event Action<WeaponEntry, float, float> OnWeaponAttackStarted;
@@ -48,7 +51,13 @@ public class WeaponManager : MonoBehaviour
     
     private int currentWeaponIndex = 0;
 
-    public float timeSinceLastAttack; 
+    public float timeSinceLastAttack;
+
+    public bool isReadyToAttack;
+
+    public bool isAnyWeaponReady;
+    
+    public int collectedNumber;
 
     //private Dictionary<WeaponType, float> lastAttackTimes = new Dictionary<WeaponType, float>();
 
@@ -59,6 +68,8 @@ public class WeaponManager : MonoBehaviour
         PlayerController.OnWeaponSelected += SelectWeapon;
         PlayerController.OnWeaponAttackButton += TryAttack;
         ItemEquip.OnWeaponEquip += WeaponEquip;
+        PlayerAttack.OnWeaponMouseClick += WeaponAttackMouseClick;
+        LayerOneWin.OnWeaponCheck += WeaponCheck;
     }
 
     private void OnDisable()
@@ -66,44 +77,60 @@ public class WeaponManager : MonoBehaviour
         PlayerController.OnWeaponSelected -= SelectWeapon;
         PlayerController.OnWeaponAttackButton -= TryAttack;
         ItemEquip.OnWeaponEquip -= WeaponEquip;
+        LayerOneWin.OnWeaponCheck -= WeaponCheck;
     }
     
     private void Update() // it is streaming data to the Weapon ui !! need to be optimize
     {
-        timeSinceLastAttack = Time.time - currentWeaponData.lastAttackTime;
-
-        if (timeSinceLastAttack < currentWeaponData.cooldown)
+        if (currentWeaponData.collected)
         {
-            currentWeaponData.runningCooldown = timeSinceLastAttack;
 
-            // OnWeaponCooldownUpdated?.Invoke(
-            //     currentWeaponData,
-            //     currentWeaponData.runningCooldown,
-            //     currentWeaponData.cooldown
-            // );
+            timeSinceLastAttack = Time.time - currentWeaponData.lastAttackTime;
+
+            if (timeSinceLastAttack < currentWeaponData.cooldown)
+            {
+                currentWeaponData.runningCooldown = timeSinceLastAttack;
+                isReadyToAttack = false;
+                PlayerAttack.WeaponStatus = false;
+
+                // OnWeaponCooldownUpdated?.Invoke(
+                //     currentWeaponData,
+                //     currentWeaponData.runningCooldown,
+                //     currentWeaponData.cooldown
+                // );
+            }
+            else
+            {
+                currentWeaponData.runningCooldown = currentWeaponData.cooldown;
+                isReadyToAttack = true;
+                PlayerAttack.WeaponStatus = true;
+                // OnWeaponCooldownUpdated?.Invoke(
+                //     currentWeaponData,
+                //     currentWeaponData.runningCooldown,
+                //     currentWeaponData.cooldown
+                // );
+            }
+
+
+
+            // IMPORTANT:
+            // because WeaponEntry is a struct, currentWeaponData is only a copy.
+            // So we write the updated data back into the real array.
+            weapons[currentWeaponIndex] = currentWeaponData;
+
+            OnWeaponCooldownUpdated?.Invoke(
+                currentWeaponData,
+                currentWeaponData.runningCooldown,
+                currentWeaponData.cooldown
+            );
         }
         else
         {
-            currentWeaponData.runningCooldown = currentWeaponData.cooldown;
-
-            // OnWeaponCooldownUpdated?.Invoke(
-            //     currentWeaponData,
-            //     currentWeaponData.runningCooldown,
-            //     currentWeaponData.cooldown
-            // );
+            OnWeaponCooldownUpdated?.Invoke(
+                currentWeaponData,
+                0,
+                0);
         }
-        
-        
-        // IMPORTANT:
-        // because WeaponEntry is a struct, currentWeaponData is only a copy.
-        // So we write the updated data back into the real array.
-        weapons[currentWeaponIndex] = currentWeaponData;
-
-        OnWeaponCooldownUpdated?.Invoke(
-            currentWeaponData,
-            currentWeaponData.runningCooldown,
-            currentWeaponData.cooldown
-        );
     }
     
     private void Start()
@@ -113,6 +140,9 @@ public class WeaponManager : MonoBehaviour
     
     private void SelectWeapon(int index)
     {
+        if (!isAnyWeaponReady) return;
+        //if (!currentWeaponData.collected)return;
+        
         Debug.Log("it is calling select weapon!");
         if (!Enum.IsDefined(typeof(WeaponType), index))
         {
@@ -150,6 +180,7 @@ public class WeaponManager : MonoBehaviour
     
     private void TryAttack()
     {
+        isReadyToAttack = false;
         timeSinceLastAttack = Time.time - currentWeaponData.lastAttackTime;
     
         //currentWeaponData.runningCooldown = ;
@@ -186,6 +217,7 @@ public class WeaponManager : MonoBehaviour
 
     private void WeaponEquip(WeaponData data)
     {
+        isAnyWeaponReady = true;
         
         Debug.Log("weapon Equip called ");
         for (int i = 0; i < weapons.Length; i++)
@@ -194,6 +226,9 @@ public class WeaponManager : MonoBehaviour
             
             if (weapons[i].name == data.itemName)
             {
+                
+                weapons[i].collected = true;
+                //currentWeaponData = weapons[i];
                 Debug.Log("weapon Equip in for loop ");
                 SelectWeapon(i);
             }
@@ -204,6 +239,30 @@ public class WeaponManager : MonoBehaviour
             
         }
         
+    }
+
+    void WeaponAttackMouseClick(ItemEquip item )
+    {
+        TryAttack();
+        item.currWeaponData.isReadyToAttack = isReadyToAttack;
+        
+    }
+
+    void WeaponCheck()
+    {
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            
+            if (weapons[i].collected)
+            {
+                collectedNumber++;
+            }
+
+            if (collectedNumber==3)
+            {
+                LayerOneWin.isReadyToTransition = true;
+            }
+        }
     }
     
 }

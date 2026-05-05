@@ -3,9 +3,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
+    public static event System.Action<ItemEquip> OnWeaponMouseClick;
+    
+    
     public InputActionReference attackInput;
 
     private ItemEquip itemEquip;
+
+    public static bool WeaponStatus;
 
     void Start()
     {
@@ -30,8 +35,15 @@ public class PlayerAttack : MonoBehaviour
             {
                 return;
             }
-            IWeapon weapon = itemEquip.currentWeapon?.GetComponent<IWeapon>();
-            weapon?.Attack();
+            itemEquip.currWeaponData.isReadyToAttack = WeaponStatus ;
+            if (itemEquip.currWeaponData.isReadyToAttack)
+            {
+                IWeapon weapon = itemEquip.currentWeapon?.GetComponent<IWeapon>();
+                weapon?.Attack();
+            }
+            OnWeaponMouseClick?.Invoke(itemEquip);
+
+            
         }
     }
 }
