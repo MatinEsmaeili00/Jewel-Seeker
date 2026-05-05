@@ -141,6 +141,8 @@ public class WeaponManager : MonoBehaviour
     private void Start()
     {
         SwitchWeapon(WeaponType.Sword);
+        collectedNumber = 0;
+        LayerOneWin.isReadyToTransition = false;
     }
     
     private void SelectWeapon(int index)
@@ -171,17 +173,17 @@ public class WeaponManager : MonoBehaviour
 
             if (isSelected)
             {
-                //if (!weapons[i].collected) return;
-                // if (weapons[i].name == weaponEquipData[i].itemName)
-                // {
-                //     PickWeapon(weaponEquipData[i]);
-                // }
                 currentWeaponIndex = i;
                 currentWeaponData.collected = true;
                 currentWeaponData = weapons[i];
                 if (currentWeaponData.type== weaponsOldDateHolder.type )
                 {
                     currentWeaponData.runningCooldown = weaponsOldDateHolder.runningCooldown;
+                }
+                //if (!weapons[i].collected) return;
+                if (weapons[i].name == weaponEquipData[i].itemName)
+                {
+                    PickWeapon(weaponEquipData[i]);
                 }
             }
         }

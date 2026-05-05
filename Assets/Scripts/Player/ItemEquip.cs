@@ -59,6 +59,15 @@ public class ItemEquip : MonoBehaviour
 
     void WeaponSelected(WeaponData weaponEntry)
     {
-        Equip(weaponEntry);
+        Unequip();
+
+        currWeaponData = weaponEntry;
+
+        currentWeapon = Instantiate(
+            weaponEntry.equippedPrefab,
+            weaponSocket.position,
+            weaponSocket.rotation,
+            weaponSocket
+        );
     }
 }
