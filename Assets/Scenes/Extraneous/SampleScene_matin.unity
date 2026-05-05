@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 404399168}
   - component: {fileID: 404399169}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player_matin
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -575,36 +575,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponManager
   weapons:
   - type: 0
+    name: 
     weaponObject: {fileID: 0}
     damage: 0
     cooldown: 0.5
     runningCooldown: 0
+    collected: 0
     lastAttackTime: 0
   - type: 2
+    name: 
     weaponObject: {fileID: 0}
     damage: 0
     cooldown: 6
     runningCooldown: 0
+    collected: 0
     lastAttackTime: 0
   - type: 1
+    name: 
     weaponObject: {fileID: 0}
     damage: 0
     cooldown: 4
     runningCooldown: 0
+    collected: 0
     lastAttackTime: 0
   weaponsOldDateHolder:
     type: 0
+    name: 
     weaponObject: {fileID: 0}
     damage: 0
     cooldown: 0
     runningCooldown: 0
+    collected: 0
     lastAttackTime: 0
   currentWeaponData:
     type: 0
+    name: 
     weaponObject: {fileID: 0}
     damage: 0
     cooldown: 0
     runningCooldown: 0
+    collected: 0
     lastAttackTime: 0
   timeSinceLastAttack: 0
 --- !u!114 &404399168
@@ -1105,6 +1115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthHeartBar
   heartPrefab: {fileID: 5387559119918997689, guid: bbc9fb8256bc1bb4d84769390b24df5e, type: 3}
   playerController: {fileID: 404399166}
+  playerHealth: {fileID: 0}
 --- !u!114 &578565419
 MonoBehaviour:
   m_ObjectHideFlags: 0

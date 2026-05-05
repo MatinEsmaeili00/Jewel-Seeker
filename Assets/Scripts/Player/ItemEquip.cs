@@ -2,11 +2,19 @@ using UnityEngine;
 
 public class ItemEquip : MonoBehaviour
 {
+    
+    
+    public static event System.Action<WeaponData> OnWeaponEquip;
+    
+    
     public Transform weaponSocket;
 
     public GameObject currentWeapon;
     private WeaponData currWeaponData;
 
+    
+    
+    
     public void Equip(WeaponData data)
     {
         Unequip();
@@ -19,6 +27,7 @@ public class ItemEquip : MonoBehaviour
             weaponSocket.rotation,
             weaponSocket
         );
+        OnWeaponEquip?.Invoke(data);
     }
 
     private void Unequip()
