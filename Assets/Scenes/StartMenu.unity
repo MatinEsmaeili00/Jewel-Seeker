@@ -147,7 +147,7 @@ RectTransform:
   m_GameObject: {fileID: 116403010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.426992, y: 1.4265685, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1162145015}
@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 417, y: 0}
+  m_AnchoredPosition: {x: -452, y: -186}
   m_SizeDelta: {x: 161.6, y: 55.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &116403012
@@ -362,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5146718772610040640, guid: 1d29a97eaa6dd7d6dbd163a95af1f62b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -454
       objectReference: {fileID: 0}
     - target: {fileID: 5146718772610040640, guid: 1d29a97eaa6dd7d6dbd163a95af1f62b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -778,7 +778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8702997106884778726, guid: 32f105185214b120eab6ee8212bc6b2e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -461
       objectReference: {fileID: 0}
     - target: {fileID: 8702997106884778726, guid: 32f105185214b120eab6ee8212bc6b2e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -841,14 +841,14 @@ RectTransform:
   m_GameObject: {fileID: 1162145014}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2375, y: 1.2379687, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116403011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 3.9000015, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1162145016
@@ -898,8 +898,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -937,7 +937,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 6.3228836, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -987,7 +987,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 831, y: 414}
+  m_AnchoredPosition: {x: 831, y: -450}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1162857381
@@ -1033,7 +1033,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1162857382}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1824733540}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1162857382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1205,14 +1217,14 @@ RectTransform:
   m_GameObject: {fileID: 1739845408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.7920907, y: 4.0003314, z: 1}
+  m_LocalScale: {x: 3.7920907, y: 3.9506917, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1824733541}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 33, y: 5}
   m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1739845410
@@ -1237,10 +1249,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Collect jewels and weapons and avoid enemies.
 
-    Use WASD to move.
+    Use arrow keys or WASD
+    to move.
 
-    SHIFT
-    + E to collect weapon.
+    Use SHIFT + E to collect weapon.
 
     Click Start to begin!'
   m_isRightToLeft: 0
@@ -1269,14 +1281,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1308,7 +1320,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 34.626297, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1349,7 +1361,7 @@ RectTransform:
   m_GameObject: {fileID: 1824733540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.13788284, y: 0.12609886, z: 1}
+  m_LocalScale: {x: 0.45176625, y: 0.4466445, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1739845409}
@@ -1358,7 +1370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 418.3, y: -134.09998}
+  m_AnchoredPosition: {x: 222, y: -137}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1824733542
