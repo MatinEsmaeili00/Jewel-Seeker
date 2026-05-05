@@ -5,7 +5,7 @@ public class LayerTwoSpawn : MonoBehaviour
     public Transform[] spawnPoints;
     public GameObject observer;
 
-    public void SpawnEnemies()
+    void Awake()
     {
         foreach (Transform t in spawnPoints)
         {

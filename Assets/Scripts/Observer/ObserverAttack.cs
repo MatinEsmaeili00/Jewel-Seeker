@@ -13,7 +13,7 @@ public class ObserverAttack : MonoBehaviour
     public ObserverAgro observerAgro;
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     void Update()
     {
