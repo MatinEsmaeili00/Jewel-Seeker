@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 2763251911119151746}
   - component: {fileID: -6287753430769034752}
   - component: {fileID: -7853413208995160342}
+  - component: {fileID: -7525099551709302903}
   m_Layer: 0
   m_Name: SilkWorm
   m_TagString: Untagged
@@ -492,6 +493,33 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4085728504086883504, guid: a9ad96f7261442965948300ddf4976b8, type: 3}
   player: {fileID: 5667644172992650577, guid: 3e2f6bb206a2280fcb310af7cc237351, type: 3}
   observerAgro: {fileID: 397761396354042419}
+--- !u!50 &-7525099551709302903
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512849523495841385}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6043437751935158007
 GameObject:
   m_ObjectHideFlags: 0

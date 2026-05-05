@@ -153,7 +153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -475, y: 225}
+  m_AnchoredPosition: {x: -475.00003, y: 225}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &216633152
@@ -1149,7 +1149,7 @@ PrefabInstance:
     - target: {fileID: 2884564517303753216, guid: 3e2f6bb206a2280fcb310af7cc237351, type: 3}
       propertyPath: currentWeapon
       value: 
-      objectReference: {fileID: 4510776410722459498, guid: 9598544d303faf5f5b72d1c8085b503b, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5667644172992650577, guid: 3e2f6bb206a2280fcb310af7cc237351, type: 3}
       propertyPath: m_Name
       value: Player 1
