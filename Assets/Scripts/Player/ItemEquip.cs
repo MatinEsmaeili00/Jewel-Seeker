@@ -14,8 +14,18 @@ public class ItemEquip : MonoBehaviour
 
     
     
+    private void OnEnable()
+    {
+        WeaponManager.OnWeaponKeyboardSelect += WeaponSelected;
+    }
+
+    private void OnDisable()
+    {
+        WeaponManager.OnWeaponKeyboardSelect -= WeaponSelected;
+    }
     
-    public void Equip(WeaponData data)
+    
+    public  void Equip(WeaponData data)
     {
         Unequip();
 
@@ -44,5 +54,11 @@ public class ItemEquip : MonoBehaviour
         }
 
         currWeaponData = null;
+    }
+
+
+    void WeaponSelected(WeaponData weaponEntry)
+    {
+        Equip(weaponEntry);
     }
 }
