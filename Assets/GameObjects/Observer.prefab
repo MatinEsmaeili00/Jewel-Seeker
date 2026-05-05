@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   health: 1
-  moveSpeed: 1
+  moveSpeed: 2
   player: {fileID: 0}
   agro: {fileID: 385704436348974035}
   flee: {fileID: 7065860159396729538}
