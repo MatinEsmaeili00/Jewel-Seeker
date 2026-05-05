@@ -15,5 +15,6 @@ MonoBehaviour:
   itemName: Bow
   worldPrefab: {fileID: 5618966592616837178, guid: 04d7eb1f89f02f64191e62220e04f805, type: 3}
   equippedPrefab: {fileID: 5618966592616837178, guid: aa1711cef25670741bf84782b8de73c2, type: 3}
-  weaponAnimations: {fileID: 9100000, guid: ab0cf9aa64a8da2de8968e6451d0b45c, type: 2}
+  weaponAnimations: {fileID: 9100000, guid: e4b6f683c5a7b444d890ecfa383331eb, type: 2}
+  isReadyToAttack: 0
   damage: 1

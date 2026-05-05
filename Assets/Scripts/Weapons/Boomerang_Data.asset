@@ -15,5 +15,6 @@ MonoBehaviour:
   itemName: Boomerang
   worldPrefab: {fileID: 5618966592616837178, guid: 97d5ceda22c815b4a90142580eb8fca7, type: 3}
   equippedPrefab: {fileID: 5618966592616837178, guid: 46676b34e94cf5846ba51d8dee9519fd, type: 3}
-  weaponAnimations: {fileID: 9100000, guid: ab0cf9aa64a8da2de8968e6451d0b45c, type: 2}
+  weaponAnimations: {fileID: 9100000, guid: e4b6f683c5a7b444d890ecfa383331eb, type: 2}
+  isReadyToAttack: 0
   damage: 1
