@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using UnityEditor.Callbacks;
 using System.Numerics;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
@@ -62,5 +63,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         GetComponent<PlayerLook>().enabled = false;
         GetComponent<PlayerDash>().enabled = false;
         GetComponent<PlayerInteract>().enabled = false;
+        
+        Application.Quit();
     }
 }
