@@ -77,6 +77,7 @@ public class WeaponManager : MonoBehaviour
         PlayerController.OnWeaponSelected -= SelectWeapon;
         PlayerController.OnWeaponAttackButton -= TryAttack;
         ItemEquip.OnWeaponEquip -= WeaponEquip;
+        PlayerAttack.OnWeaponMouseClick -= WeaponAttackMouseClick;
         LayerOneWin.OnWeaponCheck -= WeaponCheck;
     }
     
@@ -143,13 +144,14 @@ public class WeaponManager : MonoBehaviour
         if (!isAnyWeaponReady) return;
         //if (!currentWeaponData.collected)return;
         
-        Debug.Log("it is calling select weapon!");
-        if (!Enum.IsDefined(typeof(WeaponType), index))
-        {
-            Debug.Log("it is failing select weapon!");
-            return;
-        }    
-        SwitchWeapon((WeaponType)index);
+            Debug.Log("it is calling select weapon!");
+            if (!Enum.IsDefined(typeof(WeaponType), index))
+            {
+                Debug.Log("it is failing select weapon!");
+                return;
+            }
+
+            SwitchWeapon((WeaponType)index);
     }
     
     private void SwitchWeapon(WeaponType type)
@@ -157,6 +159,7 @@ public class WeaponManager : MonoBehaviour
         Debug.Log("switch weapon has been called!");
         for (int i = 0; i < weapons.Length; i++)
         {
+            
             bool isSelected = weapons[i].type == type;
     
             if (weapons[i].weaponObject != null)
@@ -164,6 +167,7 @@ public class WeaponManager : MonoBehaviour
 
             if (isSelected)
             {
+                if (!weapons[i].collected) return;                
                 currentWeaponIndex = i;
                 currentWeaponData.collected = true;
                 currentWeaponData = weapons[i];

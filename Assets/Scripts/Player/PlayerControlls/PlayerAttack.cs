@@ -40,8 +40,8 @@ public class PlayerAttack : MonoBehaviour
             {
                 IWeapon weapon = itemEquip.currentWeapon?.GetComponent<IWeapon>();
                 weapon?.Attack();
+                OnWeaponMouseClick?.Invoke(itemEquip);
             }
-            OnWeaponMouseClick?.Invoke(itemEquip);
 
             
         }

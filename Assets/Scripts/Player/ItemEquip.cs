@@ -40,11 +40,7 @@ public class ItemEquip : MonoBehaviour
 
         if (currWeaponData != null)
         {
-            Instantiate(
-                currWeaponData.worldPrefab,
-                transform.position,
-                Quaternion.identity
-            );
+
         }
 
         currWeaponData = null;
