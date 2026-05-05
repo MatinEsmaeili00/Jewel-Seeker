@@ -38,9 +38,13 @@ public class PlayerAttack : MonoBehaviour
             itemEquip.currWeaponData.isReadyToAttack = WeaponStatus ;
             if (itemEquip.currWeaponData.isReadyToAttack)
             {
+                if (WeaponManager.currentWeaponData.collected)
+                {
+                    
                 IWeapon weapon = itemEquip.currentWeapon?.GetComponent<IWeapon>();
                 weapon?.Attack();
                 OnWeaponMouseClick?.Invoke(itemEquip);
+                }
             }
 
             

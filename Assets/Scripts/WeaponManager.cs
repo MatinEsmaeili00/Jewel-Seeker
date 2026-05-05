@@ -49,7 +49,7 @@ public class WeaponManager : MonoBehaviour
     public WeaponEntry weaponsOldDateHolder;
     
     private WeaponType currentWeapon;
-    public WeaponEntry currentWeaponData;
+    public static WeaponEntry currentWeaponData;
     
     private int currentWeaponIndex = 0;
 

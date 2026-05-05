@@ -69,5 +69,14 @@ public class ItemEquip : MonoBehaviour
             weaponSocket.rotation,
             weaponSocket
         );
+
+        if (!WeaponManager.currentWeaponData.collected)
+        {
+            currentWeapon.SetActive(false);
+        }
+        else
+        {
+            currentWeapon.SetActive(true);
+        }
     }
 }
