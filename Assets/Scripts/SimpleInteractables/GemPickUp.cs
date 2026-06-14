@@ -4,8 +4,8 @@ using UnityEngine.Serialization;
 public class GemPickUp : MonoBehaviour
 { 
     public int curGemNum;
-    public int goalNum1 = 10;
-    public int goalNum2 = 20;
+    private int goalNum1 = 3;
+    private int goalNum2 = 6;
     public bool isGoalLayer2;
     public bool isGoalLayer3;
 
